@@ -1,0 +1,280 @@
+:root {
+  --margin: 2rem;
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+  margin: 1.5em 0 0 0;
+  text-transform: uppercase;
+}
+h2 {
+  margin: 0 0 0.5em 0;
+}
+
+h5 {
+  margin: 0 0 0.5em 0;
+}
+h6 {
+  margin: 0 0 0 0;
+}
+
+ul,
+li,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #5e5e5e;
+  font-weight: normal;
+}
+button {
+  margin: 5px;
+  background-color: #5e5e5e;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+button.selected {
+  background-color: #ffffff;
+  color: #000000;
+}
+button:hover {
+  background-color: #eee;
+  color: #000;
+}
+button:disabled {
+  background-color: #858585;
+  color: #eee;
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+  height: 90vh;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* Card Properties */
+.card {
+  display: flex;
+}
+.card.message {
+  height: 70px;
+}
+/* Alignment */
+.card.column {
+  flex-direction: column;
+}
+.card.column.center {
+  align-items: center;
+}
+.card.center {
+  justify-content: center;
+}
+.card.stretch {
+  justify-content: space-between;
+}
+/* Margin */
+.card.bottom {
+  margin: 0 0 1em 0;
+}
+.card.top {
+  margin: 1em 0 0 0;
+}
+
+.list {
+  padding: 0.5em 0 0.5em 0;
+}
+.item {
+  padding: 0 2rem 0 2rem;
+}
+.list.item {
+  padding: 0.5em;
+}
+.cut {
+  flex-grow: 1;
+}
+
+.stack {
+  position: absolute;
+  right: 1vw;
+}
+.modal-menu {
+  visibility: visible;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(255, 255, 255); /* Fallback color */
+  background-color: rgba(255, 255, 255); /* Black w/ opacity */
+}
+
+.modal-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #fefefe;
+  margin: 7.5% auto; /* 7.5% from the top and centered */
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+.modal-title {
+  text-align: center;
+  width: 100%;
+}
+.modal-btn {
+  width: 150px;
+  height: 150px;
+}
+.sw-time {
+  display: flex;
+  width: calc(100% - var(--margin));
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem var(--margin) 1rem var(--margin);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sw-animate {
+  background: linear-gradient(30deg, #fff, #8cc63f);
+  background-size: 100% 100%;
+  animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+  0% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 300% 300%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+.sw-animate-success {
+  animation: bounce 0.5s ease;
+}
+@keyframes bounce {
+  50% {
+    transform: translate(0px, 5px);
+  }
+  100% {
+    transform: translate(0, -5px);
+  }
+}
+
+.sw-animate-error {
+  animation: shake 0.5s ease;
+}
+@keyframes shake {
+  0% {
+    background-color: #c63f3f;
+  }
+  25% {
+    transform: translate(5px, 5px);
+  }
+  50% {
+    transform: translate(-10px, -10px);
+  }
+  75% {
+    transform: translate(10px, 10px);
+  }
+  100% {
+    transform: translate(-5px, -5px);
+    background-color: #fff;
+  }
+}
+
+.sw-flash {
+  position: absolute;
+  width: calc(100% - var(--margin));
+  height: inherit;
+  background-color: white;
+  z-index: -1;
+}
+
+.sw-scan {
+  animation: flash 0.75s ease-out;
+  animation-fill-mode: backwards;
+}
+@keyframes flash {
+  0% {
+    background-color: #8cc63f;
+    opacity: 1;
+  }
+
+  100% {
+    background-color: white;
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+}
+
+.sw-error {
+  animation: error 0.75s ease-out;
+  animation-fill-mode: backwards;
+}
+@keyframes error {
+  0% {
+    background-color: #c63f3f;
+    opacity: 1;
+  }
+
+  100% {
+    background-color: white;
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+}
+
+.emp-scan {
+  animation: emp-flash 0.75s ease-out;
+  animation-fill-mode: backwards;
+}
+@keyframes emp-flash {
+  0% {
+    background-color: #e4b527;
+    opacity: 1;
+  }
+
+  100% {
+    background-color: white;
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }
+}
+
+#sw-time {
+  font-size: 72pt;
+}
+
+.barcode {
+  position: absolute;
+  top: -100px;
+}
+
+@media screen and (min-width: 700px) {
+  .card {
+    width: 100%;
+  }
+}

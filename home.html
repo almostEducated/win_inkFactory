@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'unsafe-inline' preload.js; style-src-attr 'unsafe-inline' renderer.js; style-src-elem 'self' home.css;"
+    />
+    <link rel="stylesheet" type="text/css" href="./home.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ink Strat Factory</title>
+  </head>
+  <body>
+    <div id="modal-menu" class="modal-menu">
+      <div id="main-menu" class="modal-content">
+        <h1 class="modal-title">Machine List</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="card stretch bottom">
+        <div>
+          <h1 id="machine" class="item"></h1>
+        </div>
+        <div style="text-align: right">
+          <h3 class="item" style="margin: 1.5em 0 0 0; color: black">User</h3>
+          <h5 class="item" id="title" style="margin: 0.5em 0 0 0; color: black">
+            Scan to Sign In
+          </h5>
+        </div>
+      </section>
+
+      <section class="card center message">
+        <div id="message" class="alert"></div>
+      </section>
+
+      <section class="card center">
+        <form id="login" class="list">
+          <input id="login-input" type="text" class="barcode" />
+          <input id="emp-id" type="hidden" value="" />
+        </form>
+        <form id="scan" class="list" style="display: none">
+          <input type="text" id="scan-input" class="barcode" />
+          <input id="last-item" type="hidden" value="" />
+        </form>
+      </section>
+
+      <section class="sw-time">
+        <div id="stopwatch" class="list">
+          <div id="sw-time">00:00:00</div>
+        </div>
+        <div class="sw-flash"></div>
+      </section>
+
+      <section class="card stretch top">
+        <div class="item cut">
+          <h2>Current Item</h2>
+          <h5 id="current-item"></h5>
+        </div>
+        <div class="item cut" style="text-align: right">
+          <h5>Previous Item</h5>
+          <h6 id="previous-item"></h6>
+        </div>
+      </section>
+
+      <section id="garment-card" class="card top" style="visibility: hidden">
+        <div class="item">
+          <h2>Garment Info</h2>
+          <ul id="garment-info"></ul>
+        </div>
+        <div class="stack item" style="text-align: right">
+          <h5>Session Count</h5>
+          <h6 id="session-count">0</h6>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      window.electron.machineList();
+      window.electron.login();
+      window.electron.scan();
+      window.electron.autofocus();
+    </script>
+  </body>
+</html>
