@@ -3,7 +3,7 @@ const { BSON } = require("realm");
 const Realm = require("realm");
 
 const dotenv = require("dotenv");
-const result = dotenv.config({ path: "./config.env" });
+const result = dotenv.config({ path: __dirname + "/.env" });
 if (result.error) {
   throw result.error;
 }
@@ -40,13 +40,13 @@ const {
 } = require("./schema.js");
 
 // Get the API key from the local environment
-const apiKey = process.env.REALM_API;
+const apiKey = window.process.env.REALM_API;
 if (!apiKey) {
   throw new Error("Could not find a Realm Server API Key.");
 }
 
 // Realm Login Credentials
-const app = new Realm.App({ id: process.env.REALM_ID });
+const app = new Realm.App({ id: window.process.env.REALM_ID });
 const cred = new Realm.Credentials.serverApiKey(apiKey);
 
 // Main function Realm Login

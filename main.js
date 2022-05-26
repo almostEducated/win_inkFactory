@@ -1,6 +1,7 @@
 const electron = require("electron");
 const path = require("path");
 const fs = require("fs");
+require("update-electron-app")();
 
 const { app, BrowserWindow, Menu, ipcMain, session } = electron;
 
@@ -19,11 +20,14 @@ app.on("ready", () => {
       preload: path.join(__dirname, "preload.js"),
     },
   });
+  process.stdin.resume();
+
   win.loadFile("home.html");
-  win.removeMenu();
+
   win.once("ready-to-show", () => {
     win.show();
   });
+
   win.on("closed", () => {
     app.quit();
   });
@@ -32,5 +36,3 @@ app.on("ready", () => {
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
-
-//git test comment
